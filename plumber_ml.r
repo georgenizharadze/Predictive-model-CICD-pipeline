@@ -26,7 +26,7 @@ function(){
 function(crim, zn, indus, chas, nox, rm, age, dis, rad, tax, ptratio, b, lstat){
   df_features <- data.frame(crim, zn, indus, chas, nox, rm, age, dis, rad, tax, 
                             ptratio, b, lstat, stringsAsFactors = F)
-  df_features <- as.data.frame(t(sapply(df_features, as.numeric)))
+  df_features <- as.data.frameeee(t(sapply(df_features, as.numeric)))
   df_features$chas <- as.factor(df_features$chas)
   predict(linear_model, newdata = df_features)
 }
