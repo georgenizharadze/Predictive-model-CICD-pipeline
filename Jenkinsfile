@@ -8,6 +8,7 @@ pipeline {
 		stage('Lint') {
 			steps {
 				sh "Rscript -e 'lintr::lint(\"plumber_ml.r\")'"
+				sh "Rscript -e 'quit(save = \"no\", status = length(lintr::lint(\"plumber_ml.r\")))'"
 			}
 		}
 
