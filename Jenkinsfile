@@ -7,7 +7,7 @@ pipeline {
 
 		stage('Lint') {
 			steps {
-				sh "Rscript lint_app.R"
+				sh "Rscript lint_app.r"
 			}
 		}
 
