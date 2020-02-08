@@ -7,7 +7,7 @@ pipeline {
 
 		stage('Set up environment') {
 			steps {
-				sh "R -e 'install.packages(\"lintr\")'"
+				sh "sudo R -e 'install.packages(\"lintr\")'"
 			}
 		}
 
