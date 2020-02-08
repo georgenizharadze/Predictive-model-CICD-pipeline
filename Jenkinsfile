@@ -7,7 +7,7 @@ pipeline {
 
 		stage('Lint') {
 			steps {
-				sh "Rscript lint_app.r"
+				sh "Rscript -e lintr::lint('plumber_ml.r')"
 			}
 		}
 
