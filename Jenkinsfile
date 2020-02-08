@@ -5,6 +5,12 @@ pipeline {
 
 	stages {
 
+		stage('Set up environment') {
+			steps {
+				sh "R -e 'install.packages("lintr")'"
+			}
+		}
+
 		stage('Lint') {
 			steps {
 				sh "Rscript lint_app.r"
