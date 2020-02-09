@@ -14,7 +14,9 @@ pipeline {
 
 		stage('Test - on VM') {
 			steps {
-				sh "Rscript -e 'plumber::plumb(\"plumber_ml.r\")\$run()'"
+				sh "Rscript -e 'plumber::plumb(\"plumber_ml.r\")\$run(host=\"0.0.0.0\", port=8000)'"
+				sh "sleep 60"
+				sh "kill $(lsof -t -i:8000)"
 			}
 		}
 
