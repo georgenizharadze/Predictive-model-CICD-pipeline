@@ -27,7 +27,8 @@ pipeline {
 
 		stage('Build') {
 			steps {
-				sh "docker image build --tag \${ECR_URI}/mlmodels/house_price_predictor:\${BUILD_NUMBER} ."
+				//sh "docker image build --tag \${ECR_URI}/mlmodels/house_price_predictor:\${BUILD_NUMBER} ."
+				sh "docker image build --tag \${DOCKER_IMAGE_TAG} ."
 			}
 		}
 
