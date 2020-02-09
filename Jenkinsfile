@@ -50,7 +50,7 @@ pipeline {
 
 def testAPI(){
 	sh '''
-	    status_code=\$(curl --write-out %{http_code} --out /dev/null --silent \"localhost:8000\")
+	    status_code=\$(curl --write-out %{http_code} --out /dev/null --silent \"localhost:8000/r_squared\")
 
 		if [ \$status_code == 200 ];
 		then
