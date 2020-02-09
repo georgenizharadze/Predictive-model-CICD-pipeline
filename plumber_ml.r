@@ -1,4 +1,4 @@
-linear_model <- readRDS("linear_moel.rds")
+linear_model <- readRDS("linear_model.rds")
 
 #' @apiTitle Boston house price prediction API
 
