@@ -29,13 +29,16 @@ pipeline {
 
 		stage('Test - on container') {
 			steps {
-				echo 'Running and testing container..'
+				sh "docker container run --rm -d --name test_cnt -p 8000:8000 \${ECR_URI}/mlmodels/house_price_predictor:\${BUILD_NUMBER}"
+				sleep 5
+				testAPI()
+				sh "docker container stop test_cnt"
 			}
 		}
 
 		stage('Deploy') {
 			steps {
-				sh "echo \${ECR_URI}"
+				echo "Deploying..."
 			}
 		}
 
