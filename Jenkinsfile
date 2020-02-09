@@ -42,7 +42,7 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-				echo "Deploying... \${DOCKER_IMAGE_TAG}"
+				sh "echo 'Deploying... \${DOCKER_IMAGE_TAG}'"
 			}
 		}
 
