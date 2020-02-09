@@ -3,8 +3,8 @@
 pipeline {
 	agent any
 	environment{
-		DOCKER_IMAGE_TAG = ${ECR_URI}
-		TEST_CNT_NAME = test_cnt
+		DOCKER_IMAGE_TAG = "${ECR_URI}"
+		TEST_CNT_NAME = "test_cnt"
 	}
 
 	stages {
