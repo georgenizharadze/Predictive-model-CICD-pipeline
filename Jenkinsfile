@@ -15,7 +15,8 @@ pipeline {
 		stage('Test - on VM') {
 			steps {
 				sh "Rscript -e 'plumber::plumb(\"plumber_ml.r\")\$run(host=\"0.0.0.0\", port=8000)' &"
-				sh "sleep 30"
+				sh "sleep 20"
+				testAPI()
 				sh "kill \$(lsof -t -i:8000)"
 			}
 		}
@@ -45,5 +46,19 @@ pipeline {
 		}
 
 	}
+}
+
+def testAPI(){
+	sh '''
+	    status_code=\$(curl --write-out %{http_code} --out /dev/null --silent \"localhost:8000\")
+
+		if [ \$status_code == 200 ];
+		then
+			echo \"PASS: The API is reachable\"
+		else
+			echo \"FAIL: The API is unreachable\"
+			exit 1
+		fi
+	'''
 }
 
