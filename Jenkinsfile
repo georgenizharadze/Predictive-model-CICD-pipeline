@@ -42,7 +42,7 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-				sh "echo 'Deploying... \${TEST_CNT_NAME}'"
+				echo env.TEST_CNT_NAME
 			}
 		}
 
