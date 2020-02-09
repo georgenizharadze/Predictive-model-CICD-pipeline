@@ -51,7 +51,7 @@ pipeline {
 def testAPI(){
 	    sh "status_code=\$(curl --write-out %{http_code} --out /dev/null --silent \"localhost:8000/r_squared\")"
 		sh '''
-		if [ \$status_code == 200 ];
+		if [ \$status_code = 200] ;
 		then
 			    echo \"PASS: The API is reachable\"
 		else
