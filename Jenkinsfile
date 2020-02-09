@@ -27,17 +27,16 @@ pipeline {
 
 		stage('Build') {
 			steps {
-				//sh "docker image build --tag \${ECR_URI}/mlmodels/house_price_predictor:\${BUILD_NUMBER} ."
 				sh "docker image build --tag \${DOCKER_IMAGE_TAG} ."
 			}
 		}
 
 		stage('Test - on container') {
 			steps {
-				sh "docker container run --rm -d --name test_cnt -p 8000:8000 \${ECR_URI}/mlmodels/house_price_predictor:\${BUILD_NUMBER}"
+				sh "docker container run --rm -d --name \${TEST_CNT_NAME} -p 8000:8000 \${DOCKER_IMAGE_TAG}"
 				sleep 5
 				testAPI()
-				sh "docker container stop test_cnt"
+				sh "docker container stop \${TEST_CNT_NAME}"
 			}
 		}
 
