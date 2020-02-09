@@ -43,6 +43,7 @@ pipeline {
 		stage('Deploy') {
 			steps {
 				echo env.TEST_CNT_NAME
+				echo env.DOCKER_IMAGE_TAG
 			}
 		}
 
