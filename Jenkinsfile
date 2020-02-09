@@ -8,13 +8,13 @@ pipeline {
 		stage('Lint') {
 			steps {
 				sh "Rscript -e 'lintr::lint(\"plumber_ml.r\")'"
-				sh "Rscript -e 'quit(save = \"no\", status = length(lintr::lint(\"plumber_ml.r\")))'"
+				//sh "Rscript -e 'quit(save = \"no\", status = length(lintr::lint(\"plumber_ml.r\")))'"
 			}
 		}
 
 		stage('Test - on VM') {
 			steps {
-				echo 'Testing on VM'
+				sh "Rscript -e 'plumber::plumb(\"plumber_ml.R\")$run()'"
 			}
 		}
 
@@ -44,3 +44,4 @@ pipeline {
 
 	}
 }
+
