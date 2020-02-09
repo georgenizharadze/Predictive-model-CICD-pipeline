@@ -14,7 +14,7 @@ pipeline {
 
 		stage('Test - on VM') {
 			steps {
-				sh "Rscript -e 'plumber::plumb(\"plumber_ml.R\")$run()'"
+				sh "Rscript -e 'plumber::plumb(\"plumber_ml.r\")$run()'"
 			}
 		}
 
