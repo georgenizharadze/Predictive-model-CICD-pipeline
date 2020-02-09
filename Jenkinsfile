@@ -35,7 +35,7 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-				sh "echo env.ECR_URI"
+				sh "echo \${ECR_URI}"
 			}
 		}
 
