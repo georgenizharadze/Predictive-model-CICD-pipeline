@@ -49,6 +49,6 @@ pipeline {
 }
 
 def testAPI(){
-	sh "api_test.sh"
+	sh "./api_test.sh"
 }
 
