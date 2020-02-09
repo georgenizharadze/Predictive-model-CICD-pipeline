@@ -3,7 +3,7 @@
 pipeline {
 	agent any
 	environment{
-		DOCKER_IMAGE_TAG = ${ECR_URI}/mlmodels\/house_price_predictor:${BUILD_NUMBER}
+		DOCKER_IMAGE_TAG = ${ECR_URI}
 		TEST_CNT_NAME = test_cnt
 	}
 
