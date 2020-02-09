@@ -2,6 +2,10 @@
 // Declarative Pipeline
 pipeline {
 	agent any
+	environment{
+		DOCKER_IMAGE_TAG = \${ECR_URI}/mlmodels/house_price_predictor:\${BUILD_NUMBER}
+		TEST_CNT_NAME = test_cnt
+	}
 
 	stages {
 
@@ -38,7 +42,7 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-				echo "Deploying..."
+				echo "Deploying... \${DOCKER_IMAGE_TAG}"
 			}
 		}
 
