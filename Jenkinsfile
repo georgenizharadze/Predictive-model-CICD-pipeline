@@ -23,7 +23,7 @@ pipeline {
 
 		stage('Build') {
 			steps {
-				echo 'Building image..'
+				sh "docker image build --tag test_ml:\${BUILD_NUMBER} ."
 			}
 		}
 
