@@ -3,7 +3,7 @@
 pipeline {
 	agent any
 	environment{
-		DOCKER_IMAGE_TAG = "${ECR_URI}"
+		DOCKER_IMAGE_TAG = "\${ECR_URI}"
 		TEST_CNT_NAME = "test_cnt"
 	}
 
@@ -42,7 +42,7 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-				sh "echo 'Deploying... \${DOCKER_IMAGE_TAG}'"
+				sh "echo 'Deploying... \$DOCKER_IMAGE_TAG'"
 			}
 		}
 
