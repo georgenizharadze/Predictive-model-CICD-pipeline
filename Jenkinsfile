@@ -27,8 +27,8 @@ pipeline {
 
 		stage('Build') {
 			steps {
-				//sh "docker image build --tag \${DOCKER_IMAGE_TAG} ."
-				script{appImage = docker.build("${DOCKER_IMAGE_TAG}")}
+				sh "docker image build --tag \${DOCKER_IMAGE_TAG} ."
+				//script{appImage = docker.build("${DOCKER_IMAGE_TAG}")}
 			}
 		}
 
@@ -39,6 +39,11 @@ pipeline {
 				testAPI()
 				sh "docker container stop \${TEST_CNT_NAME}"
 			}
+		}
+
+		stage("Push to registry"){
+			sh "\$(aws ecr get-login)"
+			sh "docker push \${DOCKER_IMAGE_TAG}"
 		}
 
 		stage('Deploy') {
