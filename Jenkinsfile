@@ -43,8 +43,8 @@ pipeline {
 
 		stage("Push to registry") {
 			steps{
-				sh "aws ecr describe-repositories --region eu-west-1"
-				//sh "\$(aws ecr get-login)"
+				sh "/home/ubuntu/.local/bin/aws ecr describe-repositories --region eu-west-1"
+				//sh "\$(aws ecr get-login --region eu-west-1)"
 				//sh "docker push \${DOCKER_IMAGE_TAG}"
 			}
 		}
