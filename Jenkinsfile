@@ -3,7 +3,7 @@
 pipeline {
 	agent any
 	environment{
-		DOCKER_IMAGE_TAG = "${ECR_URI}/mlmodels/house_price_predictor:${BUILD_NUMBER}"
+		DOCKER_IMAGE_TAG = "${ECR_URI}/boston_houses:${BUILD_NUMBER}"
 		TEST_CNT_NAME = "test_cnt"
 	}
 
@@ -27,7 +27,8 @@ pipeline {
 
 		stage('Build') {
 			steps {
-				sh "docker image build --tag \${DOCKER_IMAGE_TAG} ."
+				//sh "docker image build --tag \${DOCKER_IMAGE_TAG} ."
+				appImage = docker.build("${DOCKER_IMAGE_TAG}")
 			}
 		}
 
