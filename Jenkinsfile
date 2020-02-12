@@ -41,7 +41,7 @@ pipeline {
 			}
 		}
 
-		stage("Push to registry"){
+		stage("Push to registry") {
 			sh "\$(aws ecr get-login)"
 			sh "docker push \${DOCKER_IMAGE_TAG}"
 		}
