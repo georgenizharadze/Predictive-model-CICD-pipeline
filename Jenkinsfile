@@ -53,6 +53,7 @@ pipeline {
 			steps {
 				echo env.TEST_CNT_NAME
 				echo env.DOCKER_IMAGE_TAG
+				sh "mkdir $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH"
 				sh "aws eks describe-cluster --name EKS-edu --region us-east-2"
 				sh "kubectl get svc"
 			}
