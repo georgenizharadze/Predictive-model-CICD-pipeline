@@ -43,7 +43,6 @@ pipeline {
 
 		stage("Push to registry") {
 			steps{
-				//sh "aws ecr describe-repositories --region eu-west-1"
 				sh "\$(aws ecr get-login --region eu-west-1 --no-include-email)"
 				sh "docker push \${DOCKER_IMAGE_TAG}"
 			}
@@ -51,19 +50,10 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-				echo env.TEST_CNT_NAME
-				echo env.DOCKER_IMAGE_TAG
-				sh "aws eks describe-cluster --name EKS-edu --region us-east-2"
-				sh "kubectl get svc"
+				sh "sed s/<replace with latest image>/\${DOCKER_IMAGE_TAG}/g deploy.yml > deploy_latest.yml"
+				sh "kubectl apply -f deploy_latest.yml svc.yml"
 			}
 		}
-
-    		stage('Test - user acceptance') {
-			steps {
-				echo 'Testing, UAT..'
-			}
-		}
-
 	}
 }
 
