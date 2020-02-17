@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: boston_house_price-predictor-svc
+  name: boston-house-price-predictor-svc
   labels:
-    app: boston_house_price-predictor
+    app: boston-house-price-predictor
 spec:
   type: NodePort
   ports:
@@ -12,4 +12,4 @@ spec:
     targetPort: 80
     protocol: TCP
   selector:
-    app: boston_house_price-predictor
+    app: boston-house-price-predictor
