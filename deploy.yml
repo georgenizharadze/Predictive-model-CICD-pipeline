@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
       - name: price-predictor-pod
-        image: <replace with latest image>
+        image: tagVersion
         ports:
         - containerPort: 80
