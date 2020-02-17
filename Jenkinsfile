@@ -50,7 +50,7 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-				sh "sed s/<replace with latest image>/\${DOCKER_IMAGE_TAG}/g deploy.yml > deploy_latest.yml"
+				sh "sed \"s/<replace with latest image>/\${DOCKER_IMAGE_TAG}/g\" deploy.yml > deploy_latest.yml"
 				sh "kubectl apply -f deploy_latest.yml svc.yml"
 			}
 		}
