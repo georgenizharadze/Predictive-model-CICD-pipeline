@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boston_house_price-predictor-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: price-predictor
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: price-predictor
+    spec:
+      containers:
+      - name: price-predictor-pod
+        image: <replace with latest image>
+        ports:
+        - containerPort: 80
