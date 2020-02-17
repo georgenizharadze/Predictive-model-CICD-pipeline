@@ -6,7 +6,7 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: price-predictor
+      app: boston_house_price-predictor
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
