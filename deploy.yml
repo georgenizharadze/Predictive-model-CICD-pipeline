@@ -16,10 +16,10 @@ spec:
   template:
     metadata:
       labels:
-        app: price-predictor
+        app: boston-house-price-predictor
     spec:
       containers:
-      - name: price-predictor-pod
+      - name: boston-house-price-predictor-pod
         image: tagVersion
         ports:
         - containerPort: 80
