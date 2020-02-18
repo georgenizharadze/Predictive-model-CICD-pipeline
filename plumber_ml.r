@@ -4,7 +4,7 @@ linear_model <- readRDS("linear_model.rds")
 
 #' Show model R-squared
 #' @get /r_squared
-function(){
+function() {
   summary(linear_model)$r.squared
 }
 
@@ -23,8 +23,8 @@ function(){
 #' @param b:numeric 1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town
 #' @param lstat:numeric % lower status of the population
 #' @get /predict_price
-function(crim, zn, indus, chas, nox, rm, age, dis, rad, tax, ptratio, b, lstat){
-  df_features <- data.frame(crim, zn, indus, chas, nox, rm, age, dis, rad, tax, 
+function(crim, zn, indus, chas, nox, rm, age, dis, rad, tax, ptratio, b, lstat) {
+  df_features <- data.frame(crim, zn, indus, chas, nox, rm, age, dis, rad, tax,
                             ptratio, b, lstat, stringsAsFactors = F)
   df_features <- as.data.frame(t(sapply(df_features, as.numeric)))
   df_features$chas <- as.factor(df_features$chas)
