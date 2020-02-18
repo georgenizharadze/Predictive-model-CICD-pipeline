@@ -5,7 +5,7 @@ metadata:
   labels:
     app: boston-house-price-predictor
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 8080
     nodePort: 30002
